@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang = 'en-us'>
+
+<head> 
+  <meta charset = 'UTF-8'>
+<title>Functions</title>
+</head>
+<h1> THE PSYCHIC GAME </h1>
+
+<p> Geuss what letter I am thinking of</p>
+<br>
+
+<p> Wins: <span id='wins'><strong>..</strong></span></p>
+<br>
+<p> Losses: <span id='loss'><strong>..</strong></span></p>
+
+<br>
+
+<p> Geusses left: <span id="geuss"><strong>10</strong></span></p>
+<br>
+<p> Your Geusses so far: <span id="farr"><strong></strong></span></p>
+
+
+
+
+<body>
+  <script type = "text/JavaScript">
+  // CREATING AN ARRAY FOR THE POSSIBLE OUTCOME OF LETTERS
+  var letter = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+  // VARIABLE FOR USER INPUT
+  var userChoice;
+  // VARIABLE FOR COMPUTER INPUT
+  var comChoice;
+
+  // CREATING SPAND ID'S AND RECALLING TO USE THEM IN FUNCTION
+  var win = document.getElementById('wins');
+  var loss1 = document.getElementById('loss');
+  var geuss1 = document.getElementById("geuss");
+  var far = document.getElementById("farr");
+
+  // CREATING INTEGER VALUES TO REFER BACK TO
+  var int = 1;
+  var lint = 1;
+  var gint = 9;
+
+  // FUNCTION FOR EVERYTIME A KEY IS PRESSED
+  document.onkeyup = function(event) {
+    // COMPUTER RANDOMLY CHOOSES LETTER FROM ARRAY
+    comChoice = letter[Math.floor(Math.random() * letter.length)];
+    // USER PRESSES A KEY WHICH THE COMPUTER READS "WITH EVENT.KEY"
+    userChoice = event.key
+
+
+
+    // IF ELSE STATEMENTS FOR OUTCOMES
+    if (userChoice == comChoice) {
+    // IF THE LETTERS MATCH THEN ADD ONE TO WINS
+      win.innerHTML = int++;
+      alert('YOUR A GENIUS!!'); 
+    } else if (userChoice !== comChoice) {
+    // IF THE LETTERS DO NOT MATCH THEN DECREASE GEUSSLEFT BY ONE 
+      geuss1.innerHTML = gint--;
+      farr.innerHTML += userChoice + ", ";
+    } 
+    // IF GEUSSES REACH 0 RESTART THE GAME WITHOUT CHANGING WINS OR LOSSES
+    if ( geuss1.innerHTML <= 0) {
+      // location.reload(false);
+      console.log(lint + 1);
+      loss1.innerHTML = lint++; 
+      alert('GAME OVER!!!');
+
+      // REINTIALIZE THE GAME
+      gint = 9;
+      far.innerHTML = "";
+    };
+  };
+  
+  </script>
+
+</body>
+</html>
